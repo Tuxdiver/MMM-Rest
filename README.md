@@ -109,5 +109,19 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>60000</code>
 			</td>
 		</tr>
+		<tr>
+			<td><code>initialLoadDelay</code></td>
+			<td>How long to wait for the first load<br>
+				<br><b>Example:</b> <code>60000</code>
+				<br><b>Default value:</b> <code>0</code>
+			</td>
+		</tr>
+		<tr>
+			<td><code>animationSpeed</code></td>
+			<td>Fadeover effect for dom updates<br>
+				<br><b>Example:</b> <code>1000</code>
+				<br><b>Default value:</b> <code>2000</code>
+			</td>
+		</tr>
 	</tbody>
 </table>
