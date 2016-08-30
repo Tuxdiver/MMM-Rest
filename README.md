@@ -2,7 +2,6 @@
 The `MMM-Rest` module is a <a href="https://github.com/MichMich/MagicMirror">MagicMirror</a> addon.
 This module collects data via AJAX / REST calls and displays it on your Mirror
 
-TODO
 ![Rest Displays](https://raw.githubusercontent.com/Tuxdiver/MMM-Rest/master/Bildschirmfoto%202016-08-30%20um%2008.47.47.png)
 
 
@@ -47,9 +46,9 @@ modules: [
                 },
             ],
             output: [
-                ['Wohnzimmer','@1','@2'],
-                ['Küche','@3','@4'],
-                ['TK','@5'],
+                ['Livingroom','@1','@2'],
+                ['Kitchen','@3','@4'],
+                ['Fridge','@5'],
             ],
 	}
 ]
@@ -71,11 +70,37 @@ The following properties can be configured:
 	<tbody>
 		<tr>
 			<td><code>sections</code></td>
-			<td>TODO</td>
+			<td>sections is an array of hashes for the REST endpoints to connect to<br>
+            <table>
+            	<thead>
+            		<tr>
+            			<th>Option</th>
+            			<th width="100%">Description</th>
+            		</tr>
+            	<thead>
+                <tbody>
+                    <tr>
+                        <td><code>suffix</code></td>
+                        <td>suffix to append to value from REST-Call</td>
+                    </tr>
+                    <tr>
+                        <td><code>digits</code></td>
+                        <td>Number of digits of the value</td>
+                    </tr>
+                    <tr>
+                        <td><code>url</code></td>
+                        <td>The url to call. It has to return a single integer / floating point value</td>
+                    </tr>
+                </tbody>
+            </table>
+            </td>
 		</tr>
 		<tr>
 			<td><code>output</code></td>
-			<td>TODO</td>
+			<td>control the output table for the display.
+            Has to be a 2-dimensional array representing the rows and the columns of the output<br>
+            A cell containing a '@' followed by a number represents the section id (starting by 1) of the REST Urls
+            </td>
 		</tr>
 		<tr>
 			<td><code>updateInterval</code></td>
