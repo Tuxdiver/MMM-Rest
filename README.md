@@ -3,7 +3,7 @@ The `MMM-Rest` module is a <a href="https://github.com/MichMich/MagicMirror">Mag
 This module collects data via AJAX / REST calls and displays it on your Mirror
 
 TODO
-![Rest Displays](https://cloud.githubusercontent.com/assets/19363185/17138689/754130ba-530f-11e6-855a-d3c3142f36eb.png)
+![Rest Displays](https://raw.githubusercontent.com/Tuxdiver/MMM-Rest/master/Bildschirmfoto%202016-08-30%20um%2008.47.47.png)
 
 
 ## Known Issues
