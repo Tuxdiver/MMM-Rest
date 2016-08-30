@@ -2,7 +2,7 @@
 The `MMM-Rest` module is a <a href="https://github.com/MichMich/MagicMirror">MagicMirror</a> addon.
 This module collects data via AJAX / REST calls and displays it on your Mirror
 
-![Rest Displays](https://raw.githubusercontent.com/Tuxdiver/MMM-Rest/master/Bildschirmfoto%202016-08-30%20um%2008.47.47.png)
+![Rest Displays](https://raw.githubusercontent.com/wiki/Tuxdiver/MMM-Rest/images/screenshot.png)
 
 
 ## Known Issues
@@ -20,7 +20,7 @@ modules: [
         config: {
             sections: [
                 {
-                    suffix: '°C',
+                    suffix: 'Â°C',
                     digits: 1,
                     url: 'http://www.dirk-melchers.de/echo.php?text=22.54',
                 },
@@ -30,7 +30,7 @@ modules: [
                     url: 'http://www.dirk-melchers.de/echo.php?text=59.1',
                 },
                 {
-                    suffix: '°C',
+                    suffix: 'Â°C',
                     digits: 1,
                     url: 'http://www.dirk-melchers.de/echo.php?text=23.10',
                 },
@@ -40,7 +40,7 @@ modules: [
                     url: 'http://www.dirk-melchers.de/echo.php?text=62.1',
                 },
                 {
-                    suffix: '°C',
+                    suffix: 'Â°C',
                     digits: 1,
                     url: 'http://www.dirk-melchers.de/echo.php?text=-19.73',
                 },
