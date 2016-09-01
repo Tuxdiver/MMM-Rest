@@ -11,7 +11,8 @@ Module.register("MMM-Rest",{
 
 	// Default module config.
 	defaults: {
-		updateInterval: 60 * 1000, 
+        debug: false,
+        updateInterval: 60 * 1000, 
 		animationSpeed: 2 * 1000,
 		initialLoadDelay: 0,
         sections: [
@@ -31,7 +32,12 @@ Module.register("MMM-Rest",{
 		return ["MMM-Rest.css"];
 	},
 
-
+    debugmsg: function(msg) {
+        if (this.config.debug) {
+            Log.info(msg);
+        }
+    },
+    
 	// Define start sequence.
 	start: function() {
 		Log.info("Starting module: " + this.name);
@@ -53,6 +59,8 @@ Module.register("MMM-Rest",{
 	getDom: function() {
         var self = this;
 
+        this.debugmsg('MMM-Rest: getDom');
+        
         // create wrapper <div>
 		var wrapper = document.createElement("div");
         
@@ -76,6 +84,8 @@ Module.register("MMM-Rest",{
         
         // loop over all output rows
         for (row_id in self.config.output) {
+            this.debugmsg('MMM-Rest: getDom row='+row_id);
+            
             var row = self.config.output[row_id];
             
             // create <tr>
@@ -116,10 +126,12 @@ Module.register("MMM-Rest",{
 	getData: function() {
 
         var self = this;
-
+        this.debugmsg('MMM-Rest: getData');
+        
         // loop over all sections
         for (id in self.sections) {
             var section = self.sections[id];
+            this.debugmsg('MMM-Rest: getData section id: '+id);
 
             // prepare AJAX call
             var restRequest = new XMLHttpRequest();
@@ -133,14 +145,16 @@ Module.register("MMM-Rest",{
                 return function() {
                     if (this.readyState === 4) {
                         if (this.status === 200) {
+                            Log.info('MMM-Rest: getData request ready section id: '+section_id);
                             self.processResult(section_id, this.response);
                         } else {
-                            console.log("REST Error - Status: " + this.status);
+                            Log.info("MMM-Rest Error - Status: " + this.status);
                         }
                     }
                 }})();
             restRequest.send();
         }
+        
         self.scheduleUpdate(self.updateInterval);
 	},
 
@@ -148,6 +162,8 @@ Module.register("MMM-Rest",{
 
         // store the data in the sectionData array       
         this.sectionData[id] = data;
+        
+        this.debugmsg('MMM-Rest: Process result section: ' + id)
         
 		this.loaded = true;
 		this.debugVar = "";
@@ -171,6 +187,7 @@ Module.register("MMM-Rest",{
 		}, nextLoad);
         
 	},
+
 
 
 });
