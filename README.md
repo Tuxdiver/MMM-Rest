@@ -1,6 +1,6 @@
 # Module: MMM-Rest
 The `MMM-Rest` module is a <a href="https://github.com/MichMich/MagicMirror">MagicMirror</a> addon.
-This module collects data via AJAX / REST calls and displays it on your Mirror
+This module collects data via AJAX / REST calls and displays it on your mirror
 
 ![Rest Displays](https://raw.githubusercontent.com/wiki/Tuxdiver/MMM-Rest/images/screenshot.png)
 
@@ -20,29 +20,29 @@ modules: [
         config: {
             sections: [
                 {
-                    suffix: '°C',
+                    suffix: '<span class="wi wi-celsius"></span>',
                     digits: 1,
-                    url: 'http://www.dirk-melchers.de/echo.php?text=22.54',
+                    url: 'https://www.dirk-melchers.de/echo.php?text=22.54',
                 },
                 {
                     suffix: '%',
                     digits: 1,
-                    url: 'http://www.dirk-melchers.de/echo.php?text=59.1',
+                    url: 'https://www.dirk-melchers.de/echo.php?text=59.1',
                 },
                 {
-                    suffix: '°C',
+                    suffix: '<span class="wi wi-celsius"></span>',
                     digits: 1,
-                    url: 'http://www.dirk-melchers.de/echo.php?text=23.10',
+                    url: 'https://www.dirk-melchers.de/echo.php?text=23.10',
                 },
                 {
                     suffix: '%',
                     digits: 1,
-                    url: 'http://www.dirk-melchers.de/echo.php?text=62.1',
+                    url: 'https://www.dirk-melchers.de/echo.php?text=62.1',
                 },
                 {
-                    suffix: '°C',
+                    suffix: '<span class="wi wi-celsius"></span>',
                     digits: 1,
-                    url: 'http://www.dirk-melchers.de/echo.php?text=-19.73',
+                    url: 'https://www.dirk-melchers.de/echo.php?text=-19.73',
                 },
             ],
             output: [
@@ -58,7 +58,6 @@ modules: [
 
 The following properties can be configured:
 
-
 <table width="100%">
 	<!-- why, markdown... -->
 	<thead>
@@ -69,7 +68,7 @@ The following properties can be configured:
 	<thead>
 	<tbody>
 		<tr>
-			<td><code>sections</code></td>
+			<td valign="top"><code>sections</code></td>
 			<td>sections is an array of hashes for the REST endpoints to connect to<br>
             <table>
             	<thead>
@@ -80,15 +79,15 @@ The following properties can be configured:
             	<thead>
                 <tbody>
                     <tr>
-                        <td><code>suffix</code></td>
+                        <td valign="top"><code>suffix</code></td>
                         <td>suffix to append to value from REST-Call</td>
                     </tr>
                     <tr>
-                        <td><code>digits</code></td>
+                        <td valign="top"><code>digits</code></td>
                         <td>Number of digits of the value</td>
                     </tr>
                     <tr>
-                        <td><code>url</code></td>
+                        <td valign="top"><code>url</code></td>
                         <td>The url to call. It has to return a single integer / floating point value</td>
                     </tr>
                 </tbody>
@@ -96,31 +95,38 @@ The following properties can be configured:
             </td>
 		</tr>
 		<tr>
-			<td><code>output</code></td>
+			<td valign="top"><code>output</code></td>
 			<td>control the output table for the display.
             Has to be a 2-dimensional array representing the rows and the columns of the output<br>
             A cell containing a '@' followed by a number represents the section id (starting by 1) of the REST Urls
             </td>
 		</tr>
 		<tr>
-			<td><code>updateInterval</code></td>
+			<td valign="top"><code>updateInterval</code></td>
 			<td>How often this refreshes<br>
 				<br><b>Example:</b> <code>60000</code>
 				<br><b>Default value:</b> <code>60000</code>
 			</td>
 		</tr>
 		<tr>
-			<td><code>initialLoadDelay</code></td>
+			<td valign="top"><code>initialLoadDelay</code></td>
 			<td>How long to wait for the first load<br>
 				<br><b>Example:</b> <code>60000</code>
 				<br><b>Default value:</b> <code>0</code>
 			</td>
 		</tr>
 		<tr>
-			<td><code>animationSpeed</code></td>
+			<td valign="top"><code>animationSpeed</code></td>
 			<td>Fadeover effect for dom updates<br>
 				<br><b>Example:</b> <code>1000</code>
 				<br><b>Default value:</b> <code>2000</code>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><code>debug</code></td>
+			<td>Log messages to Log.info / console<br>
+				<br><b>Example:</b> <code>true</code>
+				<br><b>Default value:</b> <code>false</code>
 			</td>
 		</tr>
 	</tbody>
