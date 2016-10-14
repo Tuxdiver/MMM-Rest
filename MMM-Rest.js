@@ -73,7 +73,7 @@ Module.register("MMM-Rest",{
 
         // Loading message
 		if (!this.loaded) {
-			wrapper.innerHTML = "Loading...";
+			wrapper.innerHTML = "MMM-Rest Loading...";
 			wrapper.className = "dimmed light small";
 			return wrapper;
 		}
@@ -83,7 +83,7 @@ Module.register("MMM-Rest",{
         tableHTML.className="small";
         
         // loop over all output rows
-        for (row_id in self.config.output) {
+        for (var row_id in self.config.output) {
             this.debugmsg('MMM-Rest: getDom row='+row_id);
             
             var row = self.config.output[row_id];
@@ -93,12 +93,12 @@ Module.register("MMM-Rest",{
             tableHTML.appendChild(tr);
 
             // loop over all columns in this row
-            for (col_id in row) {
+            for (var col_id in row) {
                 var col = row[col_id];
                 var td = document.createElement("td");
 
                 // does the col match @[0-9]+?
-                var data_ids = col.match(/^@(\d+)$/)
+                var data_ids = col.match(/^@(\d+)$/);
 
                 // we have a regexp match - so don't show the col, but the sectionData in the right format
                 if (data_ids !== null) {
@@ -129,50 +129,46 @@ Module.register("MMM-Rest",{
         this.debugmsg('MMM-Rest: getData');
         
         // loop over all sections
-        for (id in self.sections) {
+        for (var id in self.sections) {
             var section = self.sections[id];
             this.debugmsg('MMM-Rest: getData section id: '+id);
 
-            // prepare AJAX call
-            var restRequest = new XMLHttpRequest();
-            restRequest.open("GET", section.url, true);
-            
-            // some kind of magic here (at least for me)
-            // we have a function returning a function to store the current section_id in it (closure)
-            // because otherwise we could not assign the returning values to their section_id
-            restRequest.onreadystatechange = (function() {
-                var section_id = id;
-                return function() {
-                    if (this.readyState === 4) {
-                        if (this.status === 200) {
-                            Log.info('MMM-Rest: getData request ready section id: '+section_id);
-                            self.processResult(section_id, this.response);
-                        } else {
-                            Log.info("MMM-Rest Error - Status: " + this.status);
-                        }
-                    }
-                }})();
-            restRequest.send();
+            this.sendSocketNotification(
+                'MMM_REST_REQUEST',
+                {
+                    id: id,
+                    url: section.url
+                }
+            );
         }
         
         self.scheduleUpdate(self.updateInterval);
 	},
 
-	processResult: function(id, data) {
+    processResult: function(id, data) {
 
         // store the data in the sectionData array       
         this.sectionData[id] = data;
         
-        this.debugmsg('MMM-Rest: Process result section: ' + id)
+        this.debugmsg('MMM-Rest: Process result section: ' + id);
         
 		this.loaded = true;
 		this.debugVar = "";
-
-        // this is ugly! The dom is updated for every value,
-        // but it would be enough to do it, when all calls are finished
-        // hint: maybe separate the data update and the dom update from each other...
+        
 		this.updateDom(this.config.animationSpeed);
 	},
+    
+    socketNotificationReceived: function(notification, payload) {
+        if (notification === 'MMM_REST_RESPONSE' ) {
+            this.debugmsg('received:' + notification);
+            if(payload.data && payload.data.statusCode === 200){
+                this.debugmsg("process result:"+payload.id+" data:"+payload.data.body);
+                this.processResult(payload.id, payload.data.body);
+            }
+        }
+    },
+    
+
 
 
 	scheduleUpdate: function(delay) {
