@@ -18,31 +18,40 @@ modules: [
 		position: 'bottom_right',	// This can be any of the regions.
 									// Best results in one of the side regions like: top_left
         config: {
-            sections: [
+                debug: false,
+                mappings: {
+                    on_off: {
+                        true: 'on',
+                        false: 'off',
+                    },
+                    temperature: {
+                        1: 'cold',
+                        2: 'warm',
+                        3: 'HOT',
+                    },
+                },
+                sections: [
                 {
-                    suffix: '<span class="wi wi-celsius"></span>',
-                    digits: 1,
+                    format: '%.1f<span class="wi wi-celsius"></span>',
                     url: 'https://www.dirk-melchers.de/echo.php?text=22.54',
                 },
                 {
-                    suffix: '%',
-                    digits: 1,
+                    format: '%d%%',
                     url: 'https://www.dirk-melchers.de/echo.php?text=59.1',
                 },
                 {
-                    suffix: '<span class="wi wi-celsius"></span>',
-                    digits: 1,
-                    url: 'https://www.dirk-melchers.de/echo.php?text=23.10',
+                    format: '%s',
+                    mapping: 'temperature',
+                    url: 'https://www.dirk-melchers.de/echo.php?text=2',
                 },
                 {
-                    suffix: '%',
-                    digits: 1,
+                    format: '%d<span class="wi wi-humidity"></span>',
                     url: 'https://www.dirk-melchers.de/echo.php?text=62.1',
                 },
                 {
-                    suffix: '<span class="wi wi-celsius"></span>',
-                    digits: 1,
-                    url: 'https://www.dirk-melchers.de/echo.php?text=-19.73',
+                    format: 'Lights %s',
+                    mapping: 'on_off',
+                    url: 'https://www.dirk-melchers.de/echo.php?text=true',
                 },
             ],
             output: [
@@ -79,16 +88,39 @@ The following properties can be configured:
             	<thead>
                 <tbody>
                     <tr>
-                        <td valign="top"><code>suffix</code></td>
-                        <td>suffix to append to value from REST-Call</td>
+                        <td valign="top"><code>format</code></td>
+                        <td>sprintf() format</td>
                     </tr>
                     <tr>
-                        <td valign="top"><code>digits</code></td>
-                        <td>Number of digits of the value</td>
+                        <td valign="top"><code>mapping</code></td>
+                        <td>Map the value againt a defined mapping</td>
                     </tr>
                     <tr>
                         <td valign="top"><code>url</code></td>
                         <td>The url to call. It has to return a single integer / floating point value</td>
+                    </tr>
+                </tbody>
+            </table>
+            </td>
+		</tr>
+		<tr>
+			<td valign="top"><code>mappings</code></td>
+			<td>mappings is an hash of hashes for the mapping of values to other values<br>
+            <table>
+            	<thead>
+            		<tr>
+            			<th>Option</th>
+            			<th width="100%">Description</th>
+            		</tr>
+            	<thead>
+                <tbody>
+                    <tr>
+                        <td valign="top"><code>NAME_OF_MAPPING</code></td>
+                        <td>Name of mapping will be referenced by sections -> mapping</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><code>values</code></td>
+                        <td>hash of key / values to map from / to</td>
                     </tr>
                 </tbody>
             </table>

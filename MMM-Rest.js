@@ -31,7 +31,13 @@ Module.register("MMM-Rest",{
 	getStyles: function() {
 		return ["MMM-Rest.css"];
 	},
-
+    
+	getScripts: function() {
+        return [
+			this.file("vendor/sprintf.min.js")
+        ];
+	},
+    
     debugmsg: function(msg) {
         if (this.config.debug) {
             Log.info(msg);
@@ -45,6 +51,7 @@ Module.register("MMM-Rest",{
 		this.debugVar = "";
 
 		this.sections = this.config.sections;
+        this.mappings = this.config.mappings;
         
 		this.loaded = false;
 		this.scheduleUpdate(this.config.initialLoadDelay);
@@ -102,8 +109,30 @@ Module.register("MMM-Rest",{
 
                 // we have a regexp match - so don't show the col, but the sectionData in the right format
                 if (data_ids !== null) {
+                    // id of the section
                     var section_id = (data_ids[1])-1;
-                    col_text = parseFloat(self.sectionData[section_id]).toFixed(self.sections[section_id].digits) + self.sections[section_id].suffix;
+
+                    // get format, could be undef, then use deprecated "digits" setting
+                    var digits = self.sections[section_id].digits;
+                    var format = self.sections[section_id].format;
+                    if (digits && !format) {
+                        format = "%."+digits+"f";
+                    }
+                    
+                    // get value
+                    var value = self.sectionData[section_id];
+
+                    // get mapping
+                    var mapping_name = self.sections[section_id].mapping;
+                    if (mapping_name) {
+                        mapping = self.mappings[mapping_name];
+                        if (mapping) {
+                            value = mapping[value];
+                        }
+                    }
+
+                    // format column
+                    col_text = sprintf(format,value);
                     td.className="align-right";
                 } else {
                     col_text = col;
