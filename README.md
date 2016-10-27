@@ -5,6 +5,9 @@ This module collects data via HTTP calls and displays it on your mirror in a tab
 ![Rest Displays](https://raw.githubusercontent.com/wiki/Tuxdiver/MMM-Rest/images/screenshot.png)
 
 
+## Changelog
+2016-10-27: incompatible changes: the "suffix" and "digits" parameters are removed and replaced by a "format" parameter! Please check your config!
+
 ## Known Issues
 - had a problem with remote URLs an AJAX: changed to node_helper.js to collect data
 
