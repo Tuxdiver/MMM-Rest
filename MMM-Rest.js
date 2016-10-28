@@ -110,12 +110,12 @@ Module.register("MMM-Rest",{
                 // we have a regexp match - so don't show the col, but the sectionData in the right format
                 if (data_ids !== null) {
 
+                    // id of the section
+                    var section_id = (data_ids[1])-1;
+                    
                     // get value - process only if not undef
                     var value = self.sectionData[section_id];
-                    if (!!value) {
-
-                        // id of the section
-                        var section_id = (data_ids[1])-1;
+                    if (typeof value !== 'undefined' ) {
 
                         // get format
                         var format = self.sections[section_id].format;
