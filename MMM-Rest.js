@@ -34,7 +34,7 @@ Module.register("MMM-Rest",{
     
 	getScripts: function() {
         return [
-			this.file("vendor/sprintf.min.js")
+			this.file("node_modules/sprintf-js/dist/sprintf.min.js")
         ];
 	},
     
@@ -109,30 +109,37 @@ Module.register("MMM-Rest",{
 
                 // we have a regexp match - so don't show the col, but the sectionData in the right format
                 if (data_ids !== null) {
-                    // id of the section
-                    var section_id = (data_ids[1])-1;
 
-                    // get format, could be undef, then use deprecated "digits" setting
-                    var digits = self.sections[section_id].digits;
-                    var format = self.sections[section_id].format;
-                    if (digits && !format) {
-                        format = "%."+digits+"f";
-                    }
-                    
-                    // get value
+                    // get value - process only if not undef
                     var value = self.sectionData[section_id];
+                    if (!!value) {
 
-                    // get mapping
-                    var mapping_name = self.sections[section_id].mapping;
-                    if (mapping_name) {
-                        mapping = self.mappings[mapping_name];
-                        if (mapping) {
-                            value = mapping[value];
+                        // id of the section
+                        var section_id = (data_ids[1])-1;
+
+                        // get format
+                        var format = self.sections[section_id].format;
+                        // fallback for old config
+                        if (!format) {
+                            var digits = self.sections[section_id].digits;
+                            var suffix = self.sections[section_id].suffix;
+                            format = "%."+digits+"f"+suffix;
                         }
+                        
+                        // get mapping
+                        var mapping_name = self.sections[section_id].mapping;
+                        if (mapping_name) {
+                            mapping = self.mappings[mapping_name];
+                            if (mapping) {
+                                value = mapping[value];
+                            }
+                        }
+    
+                        // format column using sprintf
+                        col_text = sprintf(format, value);
+                    } else {
+                        col_text = '...';
                     }
-
-                    // format column
-                    col_text = sprintf(format,value);
                     td.className="align-right";
                 } else {
                     col_text = col;

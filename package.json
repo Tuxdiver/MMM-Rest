@@ -1,0 +1,11 @@
+{
+  "name": "magic-mirror-module-rest",
+  "version": "1.0.0",
+  "description": "Show values from a url",
+  "main": "MMM-Rest.js",
+  "author": "Dirk Melchers",
+  "license": "ISC",
+  "dependencies": {
+    "sprintf-js": ""
+  }
+}
