@@ -5,6 +5,10 @@
   "main": "MMM-Rest.js",
   "author": "Dirk Melchers",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tuxdiver/MMM-Rest.git"
+  },
   "dependencies": {
     "sprintf-js": ""
   }
