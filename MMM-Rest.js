@@ -38,9 +38,10 @@ Module.register("MMM-Rest",{
         ];
 	},
     
-    debugmsg: function(msg) {
+    debugmsg: function() {
         if (this.config.debug) {
-            Log.info(msg);
+            var args = [].slice.call(arguments);
+            Log.info.apply(console, args);
         }
     },
     
@@ -124,6 +125,50 @@ Module.register("MMM-Rest",{
                             var digits = self.sections[section_id].digits;
                             var suffix = self.sections[section_id].suffix;
                             format = "%."+digits+"f"+suffix;
+
+                        } else if (format.constructor === Array) {
+
+                            var result='';
+                            this.debugmsg("MMM-Rest: new format section found");
+
+                            for (var condition_id in format) {
+                                var condition=format[condition_id];
+                                this.debugmsg("MMM-Rest: check condition: ",condition);
+
+                                if (typeof condition['range'] != 'undefined') {
+                                    this.debugmsg("MMM-Rest: range defined: ",condition['range']);
+                                    var min=condition['range'][0];
+                                    var max=condition['range'][1];
+                                    var match = false;
+                                    if (typeof min != 'undefined') {
+                                        if (value >= min) {
+                                            match = true;
+                                        } else {
+                                            match = false;
+                                        }
+                                    } else {
+                                        match = true;
+                                    }
+                                    if (typeof max != 'undefined') {
+                                        if (value < max) {
+                                            match = true;
+                                        } else {
+                                            match = false;
+                                        }
+                                    }
+                                    this.debugmsg("MMM-Rest: match is: "+match);
+                                    if (match) {
+                                        result = condition['format'];
+                                        break;
+                                    }
+                                } else {
+                                    result = condition['format'];
+                                    break;
+                                }
+                            }
+
+                            this.debugmsg("MMM-Rest: final format is: "+result);
+                            format = result;
                         }
                         
                         // get mapping
