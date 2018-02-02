@@ -49,6 +49,7 @@ modules: [
                         { range: [, 10], format: '<span style="color:green">%d</span>'},
                         { range: [10, 20], format: '<span style="color:yellow">%d</span>'},
                         { range: [30, ], format: '<span style="color:red">%d</span>'},
+                        { string: 'HOT', format: '<span style="color:red">%d</span>'},
                         { format: '%d'}
                     ],
                     url: 'https://www.dirk-melchers.de/echo.php?text=59.1',
@@ -105,7 +106,8 @@ The following properties can be configured:
                     <tr>
                         <td valign="top"><code>format</code></td>
                         <td>If it is a strint: sprintf() format<br>
-                        Could also be an array of hashes. The array is processed from top to bottom and first match wins. The last entry could be a default without "range". Leaving one value of the range empty means "ignore this bound"
+                        Could also be an array of hashes. The array is processed from top to bottom and first match wins. The last entry could be a default without "range". Leaving one value of the range empty means "ignore this bound".<br>
+                        You could use "string" instead of "range" to match the value against the parameter of the string.
                         </td>
                     </tr>
                     <tr>

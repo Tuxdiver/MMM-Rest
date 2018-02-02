@@ -161,7 +161,13 @@ Module.register("MMM-Rest",{
                                         result = condition['format'];
                                         break;
                                     }
-                                } else {
+                                } else if (condition['string']) {
+                                    if (value == condition['string']) {
+                                        result = condition['format'];
+                                        break;
+                                    }
+                                }
+                                else {
                                     result = condition['format'];
                                     break;
                                 }
