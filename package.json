@@ -10,6 +10,7 @@
     "url": "git+https://github.com/Tuxdiver/MMM-Rest.git"
   },
   "dependencies": {
-    "sprintf-js": ""
+    "sprintf-js": "",
+    "request": ""
   }
 }
