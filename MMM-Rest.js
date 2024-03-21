@@ -175,9 +175,7 @@ Module.register("MMM-Rest",{
 
                             this.debugmsg("MMM-Rest: final format is: "+result);
                             format = result;
-                        } else if (format == "%Date") {
-				value = new Date(value)
-			}	
+                        }
                         
                         // get mapping
                         var mapping_name = self.sections[section_id].mapping;
