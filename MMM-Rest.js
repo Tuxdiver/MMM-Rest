@@ -176,7 +176,7 @@ Module.register("MMM-Rest",{
                             this.debugmsg("MMM-Rest: final format is: "+result);
                             format = result;
                         } else if (format == "%Date") {
-				value = new Date(value);
+				value = new Date(value)
 			}	
                         
                         // get mapping
@@ -192,7 +192,7 @@ Module.register("MMM-Rest",{
 			if (format.indexOf('%d') > -1) {
 				col_text = sprintf(format, parseInt(value));
 			} else if (format == %Date) {
-				col_text = "hello";
+				col_text = "hello"
 			} else {
 				col_text = sprintf(format, value);
 			}
