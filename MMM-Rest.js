@@ -140,8 +140,9 @@ Module.register("MMM-Rest",{
                                     var min=condition['range'][0];
                                     var max=condition['range'][1];
                                     var match = false;
-                                    if (condition['format'].indexOf('%d') > -1) {
-					value = 1;
+                                    //if (condition['format'].indexOf('%d') > -1) {
+				    if (true) {
+					value = 1.0;
 					    //parseInt(value.split(".")[0].replace(/\D/g, ""));
 				    }
 				    if (typeof min != 'undefined') {
