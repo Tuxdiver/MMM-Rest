@@ -25,6 +25,7 @@ module.exports = NodeHelper.create({
                     that.sendSocketNotification('MMM_REST_RESPONSE', {
                         id: payload.id,
                         data: response
+                        tableID: payload.tableID
                     });
                 }
             });
