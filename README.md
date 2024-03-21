@@ -13,6 +13,7 @@ This module collects data via HTTP calls and displays it on your mirror in a tab
 ## Changelog
 2016-10-27: incompatible changes: the "suffix" and "digits" parameters are removed and replaced by a "format" parameter! Please check your config!
 2018-02-02: added ranges to format parameter
+2024-03-21: added `tableID` config option to permit multiple instances of the module
 
 ## Known Issues
 - had a problem with remote URLs an AJAX: changed to node_helper.js to collect data
@@ -178,6 +179,13 @@ The following properties can be configured:
 			<td>Log messages to Log.info / console<br>
 				<br><b>Example:</b> <code>true</code>
 				<br><b>Default value:</b> <code>false</code>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><code>tableID</code></td>
+			<td>A unique ID for a given instance of the module.  Optional unless you want 2 or more instances of the module in your config.<br>
+				<br><b>Type:</b> Literally anything, as long as it's unique
+				<br><b>Default value:</b> <code>1</code>
 			</td>
 		</tr>
 	</tbody>
