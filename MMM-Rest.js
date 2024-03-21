@@ -224,7 +224,7 @@ Module.register("MMM-Rest",{
                 'MMM_REST_REQUEST',
                 {
                     id: id,
-                    url: section.url
+                    url: section.url,
 		    tableID: this.config.tableID
                 }
             );
