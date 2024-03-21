@@ -188,7 +188,8 @@ Module.register("MMM-Rest",{
     
                         // format column using sprintf
 			if (format.indexOf('%d') > -1) {
-				value = parseInt(value.replace(/\D/g, ""));
+				//value = value.split(".")[0];
+				value = parseInt(value.split(".")[0].replace(/\D/g, ""));
 			}
                         col_text = sprintf(format, value);
                     } else {
