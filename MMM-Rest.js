@@ -126,10 +126,6 @@ Module.register("MMM-Rest",{
                             var suffix = self.sections[section_id].suffix;
                             format = "%."+digits+"f"+suffix;
 
-			if (format.indexOf('%d') > -1) {
-				value = parseInt(value.split(".")[0].replace(/\D/g, ""));
-		        }
-
                         } else if (format.constructor === Array) {
 
                             var result='';
@@ -145,7 +141,7 @@ Module.register("MMM-Rest",{
                                     var max=condition['range'][1];
                                     var match = false;
 				    if (typeof min != 'undefined') {
-                                        if (value >= min) {
+                                        if (parseFloat(value) >= min) {
                                             match = true;
                                         } else {
                                             match = false;
@@ -154,7 +150,7 @@ Module.register("MMM-Rest",{
                                         match = true;
                                     }
                                     if (typeof max != 'undefined') {
-                                        if (value < max) {
+                                        if (parseFloat(value) < max) {
                                             match = true;
                                         } else {
                                             match = false;
@@ -191,9 +187,9 @@ Module.register("MMM-Rest",{
                         }
     
                         // format column using sprintf
-			if (format.indexOf('%d') > -1) {
-				value = parseInt(value.split(".")[0].replace(/\D/g, ""));
-			}
+			//if (format.indexOf('%d') > -1) {
+				//value = parseInt(value);
+			//}
                         col_text = sprintf(format, value);
                     } else {
                         col_text = '...';
