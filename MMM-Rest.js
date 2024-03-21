@@ -190,12 +190,9 @@ Module.register("MMM-Rest",{
     
                         // format column using sprintf
 			if (format.indexOf('%d') > -1) {
-				col_text = sprintf(format, parseInt(value));
-			} else if (format == %Date) {
-				col_text = "hello"
-			} else {
-				col_text = sprintf(format, value);
+				value = parseInt(value);
 			}
+                        col_text = sprintf(format, value);
                     } else {
                         col_text = '...';
                     }
