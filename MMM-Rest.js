@@ -25,7 +25,7 @@ Module.register("MMM-Rest",{
         output: [
             ['The answer','@1']
         ],
-
+	tableID: 1,
 	},
 	// Define required scripts.
 	getStyles: function() {
@@ -225,6 +225,7 @@ Module.register("MMM-Rest",{
                 {
                     id: id,
                     url: section.url
+		    tableID: this.config.tableID
                 }
             );
         }
@@ -246,7 +247,7 @@ Module.register("MMM-Rest",{
 	},
     
     socketNotificationReceived: function(notification, payload) {
-        if (notification === 'MMM_REST_RESPONSE' ) {
+        if (notification === 'MMM_REST_RESPONSE' && payload.tableID == this.config.tableID ) {
             this.debugmsg('received:' + notification);
             if(payload.data && payload.data.statusCode === 200){
                 this.debugmsg("process result:"+payload.id+" data:"+payload.data.body);
