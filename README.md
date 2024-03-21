@@ -11,9 +11,9 @@ This module collects data via HTTP calls and displays it on your mirror in a tab
 
 
 ## Changelog
-2016-10-27: incompatible changes: the "suffix" and "digits" parameters are removed and replaced by a "format" parameter! Please check your config!
-2018-02-02: added ranges to format parameter
-2024-03-21: added `tableID` config option to permit multiple instances of the module
+<p>2016-10-27: incompatible changes: the "suffix" and "digits" parameters are removed and replaced by a "format" parameter! Please check your config!
+<p></p>2018-02-02: added ranges to format parameter
+<p></p>2024-03-21: added `tableID` config option to permit multiple instances of the module
 
 ## Known Issues
 - had a problem with remote URLs an AJAX: changed to node_helper.js to collect data
