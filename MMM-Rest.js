@@ -25,7 +25,6 @@ Module.register("MMM-Rest",{
         output: [
             ['The answer','@1']
         ],
-	tableID: 1,
 	},
 	// Define required scripts.
 	getStyles: function() {
