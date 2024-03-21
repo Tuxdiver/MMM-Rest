@@ -126,6 +126,10 @@ Module.register("MMM-Rest",{
                             var suffix = self.sections[section_id].suffix;
                             format = "%."+digits+"f"+suffix;
 
+			if (format.indexOf('%d') > -1) {
+				value = parseInt(value.split(".")[0].replace(/\D/g, ""));
+		        }
+
                         } else if (format.constructor === Array) {
 
                             var result='';
@@ -140,10 +144,6 @@ Module.register("MMM-Rest",{
                                     var min=condition['range'][0];
                                     var max=condition['range'][1];
                                     var match = false;
-                                    //if (condition['format'].indexOf('%d') > -1) {
-				    if (true) {
-					value = parseInt(value.split(".")[0].replace(/\D/g, ""));
-				    }
 				    if (typeof min != 'undefined') {
                                         if (value >= min) {
                                             match = true;
