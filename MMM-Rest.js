@@ -140,7 +140,10 @@ Module.register("MMM-Rest",{
                                     var min=condition['range'][0];
                                     var max=condition['range'][1];
                                     var match = false;
-                                    if (typeof min != 'undefined') {
+                                    if (condition['format'].indexOf('%d') > -1) {
+					value = parseInt(value.split(".")[0].replace(/\D/g, ""));
+				    }
+				    if (typeof min != 'undefined') {
                                         if (value >= min) {
                                             match = true;
                                         } else {
@@ -188,7 +191,6 @@ Module.register("MMM-Rest",{
     
                         // format column using sprintf
 			if (format.indexOf('%d') > -1) {
-				//value = value.split(".")[0];
 				value = parseInt(value.split(".")[0].replace(/\D/g, ""));
 			}
                         col_text = sprintf(format, value);
