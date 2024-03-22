@@ -136,8 +136,8 @@ Module.register("MMM-Rest",{
                                 var condition=format[condition_id];
                                 this.debugmsg("MMM-Rest: check condition: ",condition);
 				if (condition['transform']) {
-					var equation = Parser.parse(condition['transform'])
-					value = equation.evaluate({ value: value})
+					var equation = Parser.parse(condition['transform']);
+					value = equation.evaluate({ value: value});
 				}
 				if (typeof condition['range'] != 'undefined') {
                                     this.debugmsg("MMM-Rest: range defined: ",condition['range']);
