@@ -89,6 +89,8 @@ modules: [
                 ['Livingroom','@1','@2'],
                 ['Kitchen','@3','@4'],
                 ['Fridge','@5'],
+                ['Last Updated','@6'],
+                ['Solar Production','@7'],
             ],
 	    },
 	}
