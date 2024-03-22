@@ -160,7 +160,7 @@ Module.register("MMM-Rest",{
                                     if (match) {
                                         result = condition['format'];
 				        if (condition['transform']) {
-					    value = value / 1000;
+					    value = parseFloat(value) / 1000;
 				        }
                                         break;
                                     }
@@ -175,7 +175,7 @@ Module.register("MMM-Rest",{
 				} else {
                                     result = condition['format'];
 				    if (condition['transform']) {
-				        value = value / 1000;
+				        value = parseFloat(value) / 1000;
 				    }
                                     break;
                                 }
