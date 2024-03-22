@@ -135,8 +135,11 @@ Module.register("MMM-Rest",{
                             for (var condition_id in format) {
                                 var condition=format[condition_id];
                                 this.debugmsg("MMM-Rest: check condition: ",condition);
-
-								if (typeof condition['range'] != 'undefined') {
+				if (condition['transform']) {
+					var equation = Parser.parse(condition['transform'])
+					value = equation.evaluate({ value: value})
+				}
+				if (typeof condition['range'] != 'undefined') {
                                     this.debugmsg("MMM-Rest: range defined: ",condition['range']);
                                     var min=condition['range'][0];
                                     var max=condition['range'][1];
