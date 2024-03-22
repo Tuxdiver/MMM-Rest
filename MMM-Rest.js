@@ -159,6 +159,9 @@ Module.register("MMM-Rest",{
                                     this.debugmsg("MMM-Rest: match is: "+match);
                                     if (match) {
                                         result = condition['format'];
+				        if (condition['transform']) {
+					    value = value / 1000;
+				        }
                                         break;
                                     }
                                 } else if (condition['string']) {
@@ -167,15 +170,15 @@ Module.register("MMM-Rest",{
                                         break;
                                     }
                                 } else if (condition['dateOptions']) {
-									options = condition['dateOptions'];
-									result = condition['format'];
-								} else {
+				    options = condition['dateOptions'];
+				    result = condition['format'];
+				} else {
                                     result = condition['format'];
+				    if (condition['transform']) {
+				        value = value / 1000;
+				    }
                                     break;
                                 }
-				if (condition['transform']) {
-					value = value / 1000;
-				}
                             }
 
                             this.debugmsg("MMM-Rest: final format is: "+result);
