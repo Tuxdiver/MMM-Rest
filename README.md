@@ -5,14 +5,15 @@ This module collects data via HTTP calls and displays it on your mirror in a tab
 ![Rest Displays](https://raw.githubusercontent.com/wiki/Tuxdiver/MMM-Rest/images/screenshot.png)
 
 ## Installation
-1. Navigate into your MagicMirror's 'modules' folder and execute 'git clone https://github.com/Tuxdiver/MMM-Rest.git'
-2. cd 'cd MMM-Rest'
-3. Execute 'npm install' to install the node dependencies.
+1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/Tuxdiver/MMM-Rest.git`
+2. cd `cd MMM-Rest`
+3. Execute `npm install` to install the node dependencies.
 
 
 ## Changelog
-2016-10-27: incompatible changes: the "suffix" and "digits" parameters are removed and replaced by a "format" parameter! Please check your config!
-2018-02-02: added ranges to format parameter
+<p>2016-10-27: incompatible changes: the "suffix" and "digits" parameters are removed and replaced by a "format" parameter! Please check your config!</p>
+<p>2018-02-02: added ranges to format parameter</p>
+<p>2024-03-21: added the ability to place multiple instances of the module into config files</p>
 
 ## Known Issues
 - had a problem with remote URLs an AJAX: changed to node_helper.js to collect data

@@ -224,7 +224,8 @@ Module.register("MMM-Rest",{
                 'MMM_REST_REQUEST',
                 {
                     id: id,
-                    url: section.url
+                    url: section.url,
+		    tableID: JSON.stringify(this.config.sections)
                 }
             );
         }
@@ -246,7 +247,7 @@ Module.register("MMM-Rest",{
 	},
     
     socketNotificationReceived: function(notification, payload) {
-        if (notification === 'MMM_REST_RESPONSE' ) {
+        if (notification === 'MMM_REST_RESPONSE' && payload.tableID == JSON.stringify(this.config.sections) ) {
             this.debugmsg('received:' + notification);
             if(payload.data && payload.data.statusCode === 200){
                 this.debugmsg("process result:"+payload.id+" data:"+payload.data.body);

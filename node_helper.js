@@ -24,7 +24,8 @@ module.exports = NodeHelper.create({
                     // console.log("send notification: "+payload.id);
                     that.sendSocketNotification('MMM_REST_RESPONSE', {
                         id: payload.id,
-                        data: response
+                        data: response,
+                        tableID: payload.tableID
                     });
                 }
             });
