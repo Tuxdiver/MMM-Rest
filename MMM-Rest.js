@@ -120,7 +120,7 @@ Module.register("MMM-Rest",{
 
                         // get format
                         var options = false;
-			var format = self.sections[section_id].format;
+                        var format = self.sections[section_id].format;
                         // fallback for old config
                         if (!format) {
                             var digits = self.sections[section_id].digits;
@@ -135,7 +135,7 @@ Module.register("MMM-Rest",{
                             for (var condition_id in format) {
                                 var condition=format[condition_id];
                                 this.debugmsg("MMM-Rest: check condition: ",condition);
-				if (typeof condition['range'] != 'undefined') {
+                                if (typeof condition['range'] != 'undefined') {
                                     this.debugmsg("MMM-Rest: range defined: ",condition['range']);
                                     var min=condition['range'][0];
                                     var max=condition['range'][1];
@@ -159,14 +159,10 @@ Module.register("MMM-Rest",{
                                     this.debugmsg("MMM-Rest: match is: "+match);
                                     if (match) {
                                         result = condition['format'];
-				        if (condition['transform']) {
-					    //value = parseFloat(value) / 1000;
-					    //var formula = Parser.parse(condition['transform']);
-					    //value = formula.evaluate({ x: parseFloat(value) });
-					    //value = eval(condition['transform']);
-					    //value = Parser.evaluate("2 ^ x", { x: 3 });
-					    value = 2;
-				        }
+                                        if (condition['transform']) {
+                                            value = parseFloat(value);
+                                            value = eval(condition['transform']);
+                                        }
                                         break;
                                     }
                                 } else if (condition['string']) {
@@ -175,13 +171,14 @@ Module.register("MMM-Rest",{
                                         break;
                                     }
                                 } else if (condition['dateOptions']) {
-				    options = condition['dateOptions'];
-				    result = condition['format'];
-				} else {
+                         options = condition['dateOptions'];
+                         result = condition['format'];
+                        } else {
                                     result = condition['format'];
-				    if (condition['transform']) {
-				        value = 3;
-				    }
+                    if (condition['transform']) {
+                        value = parseFloat(value);
+                        value = eval(condition['transform']);
+                    }
                                     break;
                                 }
                             }
@@ -202,10 +199,10 @@ Module.register("MMM-Rest",{
                         // format column using sprintf
                         if (format.search(/%.\df|%f/i) > 1 || format.search('%d') > -1) {
                             col_text = sprintf(format, parseFloat(value));
-						} else if (options != false) {
-							value = new Date(value).toLocaleString(config.locale, options);
-							col_text = sprintf(format, value);
-						} else {
+                        } else if (options != false) {
+                            value = new Date(value).toLocaleString(config.locale, options);
+                            col_text = sprintf(format, value);
+                        } else {
                             col_text = sprintf(format, value);
                         }
                     } else {
