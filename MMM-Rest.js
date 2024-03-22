@@ -119,7 +119,8 @@ Module.register("MMM-Rest",{
                     if (typeof value !== 'undefined' ) {
 
                         // get format
-                        var format = self.sections[section_id].format;
+                        var options = false;
+			var format = self.sections[section_id].format;
                         // fallback for old config
                         if (!format) {
                             var digits = self.sections[section_id].digits;
@@ -135,7 +136,6 @@ Module.register("MMM-Rest",{
                                 var condition=format[condition_id];
                                 this.debugmsg("MMM-Rest: check condition: ",condition);
 
-                                var options = false;
 								if (typeof condition['range'] != 'undefined') {
                                     this.debugmsg("MMM-Rest: range defined: ",condition['range']);
                                     var min=condition['range'][0];
