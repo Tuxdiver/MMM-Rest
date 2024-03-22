@@ -124,7 +124,7 @@ The following properties can be configured:
                         <td>If it is a string: sprintf() format<br>
                         Could also be an array of hashes. The array is processed from top to bottom and first match wins. The last entry could be a default without "range". Leaving one value of the range empty means "ignore this bound".<br>
                         You could use "string" instead of "range" to match the value against the parameter of the string.<br>
-			Finally, you could use "dateOptions" instead of "range" or "string" to specify that the expected value is an ISO 8601 DateTime object (may work for other date formats as well, as long as the javascript function `new Date()` takes that format), and describe what format you want the date displayed in.  Formatting options described here https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript.  
+			Finally, you could use "dateOptions" instead of "range" or "string" to specify that the expected value is an ISO 8601 DateTime object (may work for other date formats as well, as long as the javascript function `new Date()` takes that format), and describe what format you want the date displayed in.  Formatting options described here https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript. <br> 
 			You may also add a `transform` function to convert the value before displaying it.  Use a string that is a common mathematical function with the value of the raw REST data is `value`.  E.g., `value/1000` will divide the raw value by 1000 before displaying.  Useful for converting units.
                         </td>
                     </tr>
