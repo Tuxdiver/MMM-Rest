@@ -4,7 +4,7 @@
   "description": "Show values from a url",
   "main": "MMM-Rest.js",
   "author": "Dirk Melchers",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tuxdiver/MMM-Rest.git"
