@@ -14,6 +14,7 @@ This module collects data via HTTP calls and displays it on your mirror in a tab
 <p>2016-10-27: incompatible changes: the "suffix" and "digits" parameters are removed and replaced by a "format" parameter! Please check your config!</p>
 <p>2018-02-02: added ranges to format parameter</p>
 <p>2024-03-21: added the ability to place multiple instances of the module into config files</p>
+<p>2024-03-22: Added the ability to specify and customize display of DateTime objects</p>
 
 ## Known Issues
 - had a problem with remote URLs an AJAX: changed to node_helper.js to collect data
@@ -69,6 +70,12 @@ modules: [
                     mapping: 'on_off',
                     url: 'https://www.dirk-melchers.de/echo.php?text=true',
                 },
+		{
+                    format: [
+                        { dateOptions: { weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true }, format: '<span style="color:green">%s</span>'},
+                    ],
+                    url: 'https://www.dirk-melchers.de/echo.php?text=2024-03-22T00:11:05.000+0000',
+                },
             ],
             output: [
                 ['Livingroom','@1','@2'],
@@ -109,6 +116,7 @@ The following properties can be configured:
                         <td>If it is a strint: sprintf() format<br>
                         Could also be an array of hashes. The array is processed from top to bottom and first match wins. The last entry could be a default without "range". Leaving one value of the range empty means "ignore this bound".<br>
                         You could use "string" instead of "range" to match the value against the parameter of the string.
+			Finally, you could use "dateOptions" instead of "range" or "string" to specify that the expected value is an ISO 8601 DateTime object, and describe what format you want the date displayed in.  Formatting options described here https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript.  
                         </td>
                     </tr>
                     <tr>
