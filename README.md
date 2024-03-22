@@ -79,7 +79,7 @@ modules: [
                 {
                     format: [
                         { range: [, 1000], format: '<span style="color:green">%d W</span>'},
-                        { range: [, 1000000], format: '%.1f kW', transform: 'value/1000'}
+                        { range: [1000, 1000000], format: '%.1f kW', transform: 'value/1000'}
                         { format: '%.1f MW', transform: 'value/1000000'}
                     ],
                     url: 'https://www.dirk-melchers.de/echo.php?text=10005',
