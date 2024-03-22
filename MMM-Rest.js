@@ -135,12 +135,13 @@ Module.register("MMM-Rest",{
                                 var condition=format[condition_id];
                                 this.debugmsg("MMM-Rest: check condition: ",condition);
 
-                                if (typeof condition['range'] != 'undefined') {
+                                var options = false;
+								if (typeof condition['range'] != 'undefined') {
                                     this.debugmsg("MMM-Rest: range defined: ",condition['range']);
                                     var min=condition['range'][0];
                                     var max=condition['range'][1];
                                     var match = false;
-				    if (typeof min != 'undefined') {
+                                if (typeof min != 'undefined') {
                                         if (parseFloat(value) >= min) {
                                             match = true;
                                         } else {
@@ -166,8 +167,10 @@ Module.register("MMM-Rest",{
                                         result = condition['format'];
                                         break;
                                     }
-                                }
-                                else {
+                                } else if (condition['dateOptions']) {
+									options = condition['dateOptions'];
+									result = condition['format'];
+								} else {
                                     result = condition['format'];
                                     break;
                                 }
@@ -187,10 +190,14 @@ Module.register("MMM-Rest",{
                         }
     
                         // format column using sprintf
-			if (format.indexOf('%d') > -1) {
-				value = parseInt(value);
-			}
-                        col_text = sprintf(format, value);
+                        if (format.search(/%.\df|%f/i) > 1 || format.search('%d') > -1) {
+                            col_text = sprintf(format, parseFloat(value));
+						} else if (options != false) {
+							value = new Date(value).toLocaleString(config.locale, options);
+							col_text = sprintf(format, value);
+						} else {
+                            col_text = sprintf(format, value);
+                        }
                     } else {
                         col_text = '...';
                     }
@@ -260,8 +267,6 @@ Module.register("MMM-Rest",{
     },
     
 
-
-
 	scheduleUpdate: function(delay) {
 		var nextLoad = this.config.updateInterval;
 		if (typeof delay !== "undefined" && delay >= 0) {
@@ -274,7 +279,4 @@ Module.register("MMM-Rest",{
 		}, nextLoad);
         
 	},
-
-
-
 });
