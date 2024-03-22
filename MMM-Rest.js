@@ -174,7 +174,7 @@ Module.register("MMM-Rest",{
                                     break;
                                 }
 				if (condition['transform']) {
-					value = value / 1000
+					value = value / 1000;
 				}
                             }
 
