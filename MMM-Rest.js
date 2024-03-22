@@ -163,7 +163,8 @@ Module.register("MMM-Rest",{
 					    //value = parseFloat(value) / 1000;
 					    //var formula = Parser.parse(condition['transform']);
 					    //value = formula.evaluate({ x: parseFloat(value) });
-					    value = eval(condition['transform']);
+					    //value = eval(condition['transform']);
+					    value = Parser.evaluate("value + 1000", { value: parseFloat(value) });
 				        }
                                         break;
                                     }
@@ -178,10 +179,7 @@ Module.register("MMM-Rest",{
 				} else {
                                     result = condition['format'];
 				    if (condition['transform']) {
-				        //value = parseFloat(value) / 1000;
-					//var formula = Parser.parse(condition['transform']);
-					//value = formula.evaluate({ x: parseFloat(value) });
-					value = eval(condition['transform']);
+				        value = Parser.evaluate("value + 1000", { value: parseFloat(value) });
 				    }
                                     break;
                                 }
