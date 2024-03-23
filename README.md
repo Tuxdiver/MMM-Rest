@@ -2,7 +2,7 @@
 The `MMM-Rest` module is a <a href="https://github.com/MichMich/MagicMirror">MagicMirror</a> addon.
 This module collects data via HTTP calls and displays it on your mirror in a table.
 
-![Rest Displays](https://raw.githubusercontent.com/wiki/Tuxdiver/MMM-Rest/images/screenshot.png)
+![Rest Displays](screenshot.png)
 
 ## Installation
 1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/Tuxdiver/MMM-Rest.git`
