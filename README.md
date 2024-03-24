@@ -16,6 +16,7 @@ This module collects data via HTTP calls and displays it on your mirror in a tab
 - 2016-10-27: incompatible changes: the "suffix" and "digits" parameters are removed and replaced by a "format" parameter! Please check your config!
 - 2018-02-02: added ranges to format parameter
 - 2024-03-21: added the ability to place multiple instances of the module into config files
+- 2024-03-22: Added the ability to specify and customize display of DateTime objects
 
 ## Known Issues
 
@@ -73,6 +74,12 @@ modules: [
                     mapping: 'on_off',
                     url: 'https://www.dirk-melchers.de/echo.php?text=true',
                 },
+		{
+                    format: [
+                        { dateOptions: { weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true }, format: '<span style="color:green">%s</span>'},
+                    ],
+                    url: 'https://www.dirk-melchers.de/echo.php?text=2024-03-22T00:11:05.000+0000',
+                },
             ],
             output: [
                 ['Livingroom','@1','@2'],
@@ -110,9 +117,10 @@ The following properties can be configured:
                 <tbody>
                     <tr>
                         <td valign="top"><code>format</code></td>
-                        <td>If it is a strint: sprintf() format<br>
+                        <td>If it is a string: sprintf() format<br>
                         Could also be an array of hashes. The array is processed from top to bottom and first match wins. The last entry could be a default without "range". Leaving one value of the range empty means "ignore this bound".<br>
-                        You could use "string" instead of "range" to match the value against the parameter of the string.
+                        You could use "string" instead of "range" to match the value against the parameter of the string.<br>
+			Finally, you could use "dateOptions" instead of "range" or "string" to specify that the expected value is an ISO 8601 DateTime object (may work for other date formats as well, as long as the javascript function `new Date()` takes that format), and describe what format you want the date displayed in.  Formatting options described here https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript.  
                         </td>
                     </tr>
                     <tr>
