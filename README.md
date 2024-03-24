@@ -1,32 +1,36 @@
 # Module: MMM-Rest
-The `MMM-Rest` module is a <a href="https://github.com/MichMich/MagicMirror">MagicMirror</a> addon.
+
+The `MMM-Rest` module is a [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) addon.
 This module collects data via HTTP calls and displays it on your mirror in a table.
 
-![Rest Displays](https://raw.githubusercontent.com/wiki/Tuxdiver/MMM-Rest/images/screenshot.png)
+![Rest Displays](screenshot.png)
 
 ## Installation
-1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/Tuxdiver/MMM-Rest.git`
+
+1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/Tuxdiver/MMM-Rest`
 2. cd `cd MMM-Rest`
 3. Execute `npm install` to install the node dependencies.
 
-
 ## Changelog
-<p>2016-10-27: incompatible changes: the "suffix" and "digits" parameters are removed and replaced by a "format" parameter! Please check your config!</p>
-<p>2018-02-02: added ranges to format parameter</p>
-<p>2024-03-21: added the ability to place multiple instances of the module into config files</p>
+
+- 2016-10-27: incompatible changes: the "suffix" and "digits" parameters are removed and replaced by a "format" parameter! Please check your config!
+- 2018-02-02: added ranges to format parameter
+- 2024-03-21: added the ability to place multiple instances of the module into config files
 
 ## Known Issues
+
 - had a problem with remote URLs an AJAX: changed to node_helper.js to collect data
 
 ## Using the module
 
 To use this module, add it to the modules array in the `config/config.js` file:
+
 ````javascript
 modules: [
-	{
-		module: 'MMM-Rest',
-		position: 'bottom_right',	// This can be any of the regions.
-									// Best results in one of the side regions like: top_left
+    {
+        module: 'MMM-Rest',
+        position: 'bottom_right',    // This can be any of the regions.
+                                     // Best results in one of the side regions like: top_left
         config: {
                 debug: false,
                 mappings: {
@@ -75,8 +79,8 @@ modules: [
                 ['Kitchen','@3','@4'],
                 ['Fridge','@5'],
             ],
-	    },
-	}
+        },
+    }
 ]
 ````
 
@@ -85,24 +89,24 @@ modules: [
 The following properties can be configured:
 
 <table width="100%">
-	<!-- why, markdown... -->
-	<thead>
-		<tr>
-			<th>Option</th>
-			<th width="100%">Description</th>
-		</tr>
-	<thead>
-	<tbody>
-		<tr>
-			<td valign="top"><code>sections</code></td>
-			<td>sections is an array of hashes for the REST endpoints to connect to<br>
+    <!-- why, markdown... -->
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th width="100%">Description</th>
+        </tr>
+    <thead>
+    <tbody>
+        <tr>
+            <td valign="top"><code>sections</code></td>
+            <td>sections is an array of hashes for the REST endpoints to connect to<br>
             <table>
-            	<thead>
-            		<tr>
-            			<th>Option</th>
-            			<th width="100%">Description</th>
-            		</tr>
-            	<thead>
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th width="100%">Description</th>
+                    </tr>
+                <thead>
                 <tbody>
                     <tr>
                         <td valign="top"><code>format</code></td>
@@ -122,17 +126,17 @@ The following properties can be configured:
                 </tbody>
             </table>
             </td>
-		</tr>
-		<tr>
-			<td valign="top"><code>mappings</code></td>
-			<td>mappings is an hash of hashes for the mapping of values to other values<br>
+        </tr>
+        <tr>
+            <td valign="top"><code>mappings</code></td>
+            <td>mappings is an hash of hashes for the mapping of values to other values<br>
             <table>
-            	<thead>
-            		<tr>
-            			<th>Option</th>
-            			<th width="100%">Description</th>
-            		</tr>
-            	<thead>
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th width="100%">Description</th>
+                    </tr>
+                <thead>
                 <tbody>
                     <tr>
                         <td valign="top"><code>NAME_OF_MAPPING</code></td>
@@ -145,41 +149,41 @@ The following properties can be configured:
                 </tbody>
             </table>
             </td>
-		</tr>
-		<tr>
-			<td valign="top"><code>output</code></td>
-			<td>control the output table for the display.
+        </tr>
+        <tr>
+            <td valign="top"><code>output</code></td>
+            <td>control the output table for the display.
             Has to be a 2-dimensional array representing the rows and the columns of the output<br>
             A cell containing a '@' followed by a number represents the section id (starting by 1) of the REST Urls
             </td>
-		</tr>
-		<tr>
-			<td valign="top"><code>updateInterval</code></td>
-			<td>How often this refreshes<br>
-				<br><b>Example:</b> <code>60000</code>
-				<br><b>Default value:</b> <code>60000</code>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top"><code>initialLoadDelay</code></td>
-			<td>How long to wait for the first load<br>
-				<br><b>Example:</b> <code>60000</code>
-				<br><b>Default value:</b> <code>0</code>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top"><code>animationSpeed</code></td>
-			<td>Fadeover effect for dom updates<br>
-				<br><b>Example:</b> <code>1000</code>
-				<br><b>Default value:</b> <code>2000</code>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top"><code>debug</code></td>
-			<td>Log messages to Log.info / console<br>
-				<br><b>Example:</b> <code>true</code>
-				<br><b>Default value:</b> <code>false</code>
-			</td>
-		</tr>
-	</tbody>
+        </tr>
+        <tr>
+            <td valign="top"><code>updateInterval</code></td>
+            <td>How often this refreshes<br>
+                <br><b>Example:</b> <code>60000</code>
+                <br><b>Default value:</b> <code>60000</code>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top"><code>initialLoadDelay</code></td>
+            <td>How long to wait for the first load<br>
+                <br><b>Example:</b> <code>60000</code>
+                <br><b>Default value:</b> <code>0</code>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top"><code>animationSpeed</code></td>
+            <td>Fadeover effect for dom updates<br>
+                <br><b>Example:</b> <code>1000</code>
+                <br><b>Default value:</b> <code>2000</code>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top"><code>debug</code></td>
+            <td>Log messages to Log.info / console<br>
+                <br><b>Example:</b> <code>true</code>
+                <br><b>Default value:</b> <code>false</code>
+            </td>
+        </tr>
+    </tbody>
 </table>
