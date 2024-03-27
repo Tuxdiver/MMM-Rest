@@ -19,10 +19,6 @@ This module collects data via HTTP calls and displays it on your mirror in a tab
 - 2024-03-22: Added the ability to specify and customize display of DateTime objects
 - 2024-03-22: Added the ability to transform REST results before displaying
 
-## Known Issues
-
-- had a problem with remote URLs an AJAX: changed to node_helper.js to collect data
-
 ## Using the module
 
 To use this module, add it to the modules array in the `config/config.js` file:
