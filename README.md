@@ -180,8 +180,8 @@ The following properties can be configured:
         <tr>
             <td valign="top"><code>output</code></td>
             <td>control the output table for the display.
-            Has to be a 2-dimensional array representing the rows and the columns of the output<br>
-            A cell containing a '@' followed by a number represents the section id (starting by 1) of the REST Urls
+            Has to be a 2-dimensional array representing the rows and the columns of the <br>output
+            A cell containing a '@' followed by a number represents the section id (starting <br>by 1) of the REST Urls
             </td>
         </tr>
         <tr>
