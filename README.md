@@ -136,8 +136,8 @@ The following properties can be configured:
 				<br>the javascript function `new Date()` takes that format), and describe what format you want the 
 				<br>date displayed in.  Formatting options described here 
 				<br>https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript. <br> 
-			- You may also add a `transform` function to convert the value before displaying it.  Use a string that is 
-				<br>a common mathematical function with the value of the raw REST data is `value`.  E.g., `value/1000` 
+			- You may also add a `transform` function to convert the value before displaying it.  Use a string that 
+				<br>is a common mathematical function with the value of the raw REST data is `value`.  E.g., `value/1000` 
 				<br>will divide the raw value by 1000 before displaying.  Useful for converting units.  Note:  transform 
 				<br>happens _after_ any range is matched.
                         </td>
