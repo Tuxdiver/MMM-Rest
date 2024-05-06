@@ -18,6 +18,7 @@ This module collects data via HTTP calls and displays it on your mirror in a tab
 - 2024-03-21: added the ability to place multiple instances of the module into config files
 - 2024-03-22: Added the ability to specify and customize display of DateTime objects
 - 2024-03-22: Added the ability to transform REST results before displaying
+- 2024-05-06: Added new optional variable `forceAlign` for more customizable alignment 
 
 ## Using the module
 
@@ -31,7 +32,8 @@ modules: [
                                      // Best results in one of the side regions like: top_left
         config: {
                 debug: false,
-                mappings: {
+		forceAlign: false,
+		mappings: {
                     on_off: {
                         true: 'on',
                         false: 'off',
@@ -101,6 +103,9 @@ modules: [
 ## Configuration options
 
 The following properties can be configured:
+Option|Description
+------|-----------
+`sections`	| sections is an array of hashes for the REST endpoints to connect to<br>
 
 <table width="100%">
     <!-- why, markdown... -->
