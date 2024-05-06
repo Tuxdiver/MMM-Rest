@@ -132,7 +132,7 @@ The following properties can be configured:
 				<br>"ignore this bound".<br>
                         - You could use "string" instead of "range" to match the value against the parameter of the string.<br>
 			- Finally, you could use "dateOptions" instead of "range" or "string" to specify that the expected 
-				<br>value is an <br>ISO 8601 DateTime object (may work for other date formats as well, as long as 
+				<br>value is an ISO 8601 DateTime object (may work for other date formats as well, as long as 
 				<br>the javascript function `new Date()` takes that format), and describe what format you want the 
 				<br>date displayed in.  Formatting options described here 
 				<br>https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript. <br> 
