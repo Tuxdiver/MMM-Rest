@@ -209,7 +209,8 @@ The following properties can be configured:
             <td valign="top"><code>forceAlign</code></td>
             <td>Boolean.  Describes the alignment behavior of the table<br>
 		`false` will align description cells to the left and variable cells to the right.
-		    <br> `true` will align all left cells to the left and all other cells to the right.
+		<br> `true` will align all left cells to the left and all other cells to the right.
+		<br>
                 <br><b>Default value:</b> <code>false</code>
             </td>
         </tr>
