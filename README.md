@@ -105,7 +105,7 @@ modules: [
 The following properties can be configured:
 Option|Description
 ------		|-----------
-`sections`	| sections is an array of hashes for the REST endpoints to connect to<br><br>__Option__<br><br>`format`:<br>If it is a string: sprintf() format<br>Could also be an array of hashes. The array is processed from top to bottom and first match wins. The last entry could be a default without "range". Leaving one value of the range empty means "ignore this bound".<br>You could use "string" instead of "range" to match the value against the parameter of the string.<br>
+`sections`	| `sections` is an array of hashes for the REST endpoints to connect to<br><br>__Option__<br><br>`format`:<br>If it is a string: sprintf() format<br>Could also be an array of hashes. The array is processed from top to bottom and first match wins. The last entry could be a default without "range". Leaving one value of the range empty means "ignore this bound".<br>You could use "string" instead of "range" to match the value against the parameter of the string.<br>
 
 <table width="100%">
     <!-- why, markdown... -->
