@@ -13,8 +13,9 @@ Module.register("MMM-Rest",{
 	defaults: {
         debug: false,
         updateInterval: 60 * 1000, 
-		animationSpeed: 2 * 1000,
-		initialLoadDelay: 0,
+	animationSpeed: 2 * 1000,
+	initialLoadDelay: 0,
+	forceAlign: false,
         sections: [
                     {
                         suffix: '',
@@ -208,10 +209,18 @@ Module.register("MMM-Rest",{
                     } else {
                         col_text = '...';
                     }
-                    td.className="align-right";
+                    if (false) {
+			td.className="align-left";
+		    } else {
+			td.className="align-right";
+		    }
                 } else {
                     col_text = col;
-                    td.className="align-left";
+		    if (false) {
+                    	td.className="align-right";
+		    } else {
+			td.className="align-left";
+		    }
                 }
 
                 // set content and append to row
