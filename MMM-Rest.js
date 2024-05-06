@@ -209,14 +209,14 @@ Module.register("MMM-Rest",{
                     } else {
                         col_text = '...';
                     }
-                    if (self.forceAlign === true && col_id == 0) {
+                    if (this.config.forceAlign === true && col_id == 0) {
 			td.className="align-left";
 		    } else {
 			td.className="align-right";
 		    }
                 } else {
                     col_text = col;
-		    if (self.forceAlign === true && col_id != 0) {
+		    if (this.config.forceAlign === true && col_id != 0) {
                     	td.className="align-right";
 		    } else {
 			td.className="align-left";
