@@ -139,7 +139,7 @@ The following properties can be configured:
 			- You may also add a `transform` function to convert the value before displaying it.  Use a string that 
 				<br>is a common mathematical function with the value of the raw REST data is `value`.  E.g., `value/1000` 
 				<br>will divide the raw value by 1000 before displaying.  Useful for converting units.  Note:  transform 
-				<br>happens _after_ any range is matched.
+				<br>happens <i>after</i> any range is matched.
                         </td>
                     </tr>
                     <tr>
