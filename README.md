@@ -18,6 +18,7 @@ This module collects data via HTTP calls and displays it on your mirror in a tab
 - 2024-03-21: added the ability to place multiple instances of the module into config files
 - 2024-03-22: Added the ability to specify and customize display of DateTime objects
 - 2024-03-22: Added the ability to transform REST results before displaying
+- 2024-05-06: Added new optional variable `forceAlign` for more customizable alignment 
 
 ## Using the module
 
@@ -31,7 +32,8 @@ modules: [
                                      // Best results in one of the side regions like: top_left
         config: {
                 debug: false,
-                mappings: {
+		forceAlign: false,
+		mappings: {
                     on_off: {
                         true: 'on',
                         false: 'off',
@@ -124,11 +126,20 @@ The following properties can be configured:
                 <tbody>
                     <tr>
                         <td valign="top"><code>format</code></td>
-                        <td>If it is a string: sprintf() format<br>
-                        Could also be an array of hashes. The array is processed from top to bottom and first match wins. The last entry could be a default without "range". Leaving one value of the range empty means "ignore this bound".<br>
-                        You could use "string" instead of "range" to match the value against the parameter of the string.<br>
-			Finally, you could use "dateOptions" instead of "range" or "string" to specify that the expected value is an ISO 8601 DateTime object (may work for other date formats as well, as long as the javascript function `new Date()` takes that format), and describe what format you want the date displayed in.  Formatting options described here https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript. <br> 
-			You may also add a `transform` function to convert the value before displaying it.  Use a string that is a common mathematical function with the value of the raw REST data is `value`.  E.g., `value/1000` will divide the raw value by 1000 before displaying.  Useful for converting units.  Note:  transform happens _after_ any range is matched.
+                        <td>- If it is a string: sprintf() format<br>
+                        - Could also be an array of hashes. The array is processed from top to bottom and first match wins. 
+				<br>The last entry could be a default without "range". Leaving one value of the range empty means 
+				<br>"ignore this bound".<br>
+                        - You could use "string" instead of "range" to match the value against the parameter of the string.<br>
+			- Finally, you could use "dateOptions" instead of "range" or "string" to specify that the expected 
+				<br>value is an ISO 8601 DateTime object (may work for other date formats as well, as long as 
+				<br>the javascript function `new Date()` takes that format), and describe what format you want the 
+				<br>date displayed in.  Formatting options described here 
+				<br>https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript. <br> 
+			- You may also add a `transform` function to convert the value before displaying it.  Use a string that 
+				<br>is a common mathematical function with the value of the raw REST data is `value`.  E.g., `value/1000` 
+				<br>will divide the raw value by 1000 before displaying.  Useful for converting units.  Note:  transform 
+				<br>happens <i>after</i> any range is matched.
                         </td>
                     </tr>
                     <tr>
@@ -169,8 +180,8 @@ The following properties can be configured:
         <tr>
             <td valign="top"><code>output</code></td>
             <td>control the output table for the display.
-            Has to be a 2-dimensional array representing the rows and the columns of the output<br>
-            A cell containing a '@' followed by a number represents the section id (starting by 1) of the REST Urls
+            Has to be a 2-dimensional array representing the rows and the columns <br>of the output
+            <br>A cell containing a '@' followed by a number represents the section id (starting by 1) of the REST Urls
             </td>
         </tr>
         <tr>
@@ -192,6 +203,15 @@ The following properties can be configured:
             <td>Fadeover effect for dom updates<br>
                 <br><b>Example:</b> <code>1000</code>
                 <br><b>Default value:</b> <code>2000</code>
+            </td>
+        </tr>
+	<tr>
+            <td valign="top"><code>forceAlign</code></td>
+            <td>Boolean.  Describes the alignment behavior of the table<br>
+		<code>false</code> will align description cells to the left and variable cells (e.g., <code>@1</code>) to the right.
+		<br> <code>true</code> will align all cells in the leftmost column to the left and all other cells to the right.
+		<br>
+                <br><b>Default value:</b> <code>false</code>
             </td>
         </tr>
         <tr>
